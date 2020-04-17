@@ -1,5 +1,5 @@
-Configdb utility Makefile
-=========================
+Configdb test bench
+===================
 Ease up the creation of a local test environement with `docker`.
 
 - one command to remember : `make help`
