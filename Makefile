@@ -47,7 +47,7 @@ help:
 	@echo "- make init-db              <= launch a db client to populate it"
 	@echo
 	@echo "To setup the localdb and demo images"
-	@echo "export MAIN_CCS_WORKDIR=/path/to/the/main/ccs/repo"
+	@echo "- export MAIN_CCS_WORKDIR=/path/to/the/main/ccs/repo"
 	@echo "- make setup                <= build the subsystem images"
 	@echo 
 	@echo "Usage"

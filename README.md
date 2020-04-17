@@ -2,7 +2,10 @@ Configdb utility Makefile
 =========================
 Ease up the creation of a local test environement with `docker`.
 
-**One command to remember** : `make help`
+- one command to remember : `make help`
+- one environment variable to set : `MAIN_CCS_WORKDIR`
+
+
 
 Setup
 -----
@@ -12,8 +15,11 @@ To build the database container run sequentially the two commands
 - make init-db              <= launch a db client to populate it
 ```
 
-To setup the localdb and demo images
-export MAIN_CCS_WORKDIR=/path/to/the/main/ccs/repo
+To setup the localdb and demo images, first  
+```
+export MAIN_CCS_WORKDIR=/path/to/the/main/ccs/repo   <= in the terminal or in the bash profile
+```
+then
 ```
 - make setup                <= build the subsystem images
 ```
