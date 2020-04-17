@@ -1,5 +1,3 @@
-MAIN_CCS_WORKDIR = /Users/alexandre/work/lsst/ccs/dev
-
 # Commands
 START := docker start
 STOP := docker stop
