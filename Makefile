@@ -23,6 +23,7 @@ db = mariadbccs
 dbvolume = ccsdb
 dbsub = localdb
 demosub = demosub
+demoshell = demosub-ccs-shell
 
 dbimg_server = mariadb/server:10.4
 dbimg_client = mariadb
@@ -34,6 +35,7 @@ demosubdir = $(MAIN_CCS_WORKDIR)/org-lsst-ccs-subsystem-demo
 .PHONY: help setup setup-db init-db setup-localdb setup-demo start-db start-localdb start-demo start-demo-shell stop stop-db kill-localdb kill-demo clean clean-db clean-localdb clean-demo
 
 help:
+	@echo
 	@echo "Configdb utility Makefile"
 	@echo "========================="
 	@echo "Ease up the creation of a local test environement with docker"
@@ -60,6 +62,7 @@ help:
 	@echo "- make stop                 <= kill the subsystems and stops the db"
 	@echo "- make clean                <= delete the localdb and demo images"
 	@echo "- make clean-db             <= delete the DB container and the docker volume"
+	@echo
 
 check-env:
 ifndef MAIN_CCS_WORKDIR
@@ -93,9 +96,9 @@ start-demo:
 	$(RUN_TMP) --name $(demosub) --link $(dbsub):$(dbsub) $(demosubimg)
 
 start-demo-shell:
-	$(RUN_TMP_WITH_TERM) --name $(demosub)-with-shell $(demosubimg) ./home/lsst/bin/CCSbootstrap.sh -app ccs-shell
+	$(RUN_TMP_WITH_TERM) --name $(demoshell) $(demosubimg) ./home/lsst/bin/CCSbootstrap.sh -app ccs-shell
 
-stop: kill-demo kill-localdb stop-db
+stop: kill-demo-shell kill-demo kill-localdb stop-db
 
 stop-db: 
 	-$(STOP) $(db)
@@ -105,6 +108,9 @@ kill-localdb:
 
 kill-demo: 
 	-$(KILL) $(demosub)
+
+kill-demo-shell: 
+	-$(KILL) $(demoshell)
 
 clean: clean-localdb clean-demo
 
