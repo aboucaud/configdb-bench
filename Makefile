@@ -36,8 +36,8 @@ demosubdir = $(MAIN_CCS_WORKDIR)/org-lsst-ccs-subsystem-demo
 
 help:
 	@echo
-	@echo "Configdb utility Makefile"
-	@echo "========================="
+	@echo "Configdb test bench"
+	@echo "==================="
 	@echo "Ease up the creation of a local test environement with docker"
 	@echo
 	@echo "Setup"
